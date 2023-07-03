@@ -21,13 +21,13 @@
 docker build -t <api-image-name> 
 
 4. Run the Docker Container: After the image is built successfully, run the Docker container using the following command:                                                    
-docker run -p 3000:3000 <api-image-name>
+### docker run -p 3000:3000 <api-image-name>
 
 5. Sending POST Request using docker command: Replace <container_name_or_id> with the actual name or ID of your container. Below is the command for sending POST Request:    
-docker exec <container_name_or_id> curl -X POST -H "Content-Type: application/json" -d '@path/receipt.json' http://localhost:3000/receipts/process
+### docker exec <container_name_or_id> curl -X POST -H "Content-Type: application/json" -d '@path/receipt.json' http://localhost:3000/receipts/process
 
 6. Sending GET Request using docker command : Replace <id> with the specific receipt ID you want to retrieve points for. Below is the code for sending GET Request:          
-docker exec <container_name_or_id> curl -X GET http://localhost:3000/receipts/<id>/points
+### docker exec <container_name_or_id> curl -X GET http://localhost:3000/receipts/<id>/points
 
 
 
