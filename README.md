@@ -13,20 +13,20 @@
 
 ## How to run the project:
 
-Clone the Project: Clone or download the project source code to your local machine.
+1. Clone the Project: Clone or download the project source code to your local machine.
 
-Navigate to Project Directory: Open a terminal or command prompt and navigate to the directory where you have the project files.
+2. Navigate to Project Directory: Open a terminal or command prompt and navigate to the directory where you have the project files.
 
-Build the Docker Image: Run the following command to build the Docker image for your project:
+3. Build the Docker Image: Run the following command to build the Docker image for your project:
 docker build -t <api-image-name> 
 
-Run the Docker Container: After the image is built successfully, run the Docker container using the following command:
+4. Run the Docker Container: After the image is built successfully, run the Docker container using the following command:                                                    
 docker run -p 3000:3000 <api-image-name>
 
-Sending POST Request using docker command: Replace <container_name_or_id> with the actual name or ID of your container. Below is the command for sending POST Request:
+5. Sending POST Request using docker command: Replace <container_name_or_id> with the actual name or ID of your container. Below is the command for sending POST Request:    
 docker exec <container_name_or_id> curl -X POST -H "Content-Type: application/json" -d '@path/receipt.json' http://localhost:3000/receipts/process
 
-Sending GET Request using docker command : Replace <id> with the specific receipt ID you want to retrieve points for. Below is the code for sending GET Request:
+6. Sending GET Request using docker command : Replace <id> with the specific receipt ID you want to retrieve points for. Below is the code for sending GET Request:          
 docker exec <container_name_or_id> curl -X GET http://localhost:3000/receipts/<id>/points
 
 
