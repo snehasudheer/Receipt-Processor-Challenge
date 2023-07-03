@@ -21,7 +21,7 @@
 docker build -t <api-image-name> 
 
 4. Run the Docker Container: After the image is built successfully, run the Docker container using the following command:                                                    
-    #### docker run -p 3000:3000 <api-image-name>
+    #### docker run -p 3000:3000 <api-image-name> 
 
 5. Sending POST Request using docker command: Replace <container_name_or_id> with the actual name or ID of your container. Below is the command for sending POST Request:    
     #### docker exec <container_name_or_id> curl -X POST -H "Content-Type: application/json" -d '@path/receipt.json' http://localhost:3000/receipts/process
