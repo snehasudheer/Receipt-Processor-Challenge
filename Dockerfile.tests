@@ -1,0 +1,16 @@
+# Use a separate base image for running tests
+FROM node:14 as test
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+# Copy the source code
+COPY . .
+
+# Run the tests
+CMD ["npm", "test"]

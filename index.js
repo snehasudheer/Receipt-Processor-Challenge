@@ -17,6 +17,9 @@ class ReceiptPointsApi {
     this.app.get('/', this.getRoot.bind(this));
     this.app.post('/receipts/process', this.processReceipt.bind(this));
     this.app.get('/receipts/:id/points', this.getPoints.bind(this));
+
+    // Server instance
+    this.server = null;
   }
 
   // Root URL endpoint
@@ -64,6 +67,11 @@ class ReceiptPointsApi {
   calculatePoints(receipt) {
     let points = 0;
 
+    if (receipt.items.length === 0) {
+      // Return 0 if the items list is null or empty
+      return 0;
+    }
+
     // Rule 1: One point for every alphanumeric character in the retailer name
     points += receipt.retailer.replace(/[^0-9a-z]/gi, '').length;
 
@@ -106,11 +114,23 @@ class ReceiptPointsApi {
   }
 
   start() {
-    this.app.listen(this.port, () => {
+    this.server = this.app.listen(this.port, () => {
       console.log(`Server running on http://localhost:${this.port}`);
     });
   }
+
+  stop() {
+    if (this.server) {
+      this.server.close();
+      this.server = null;
+    }
+  }
+  
+  
 }
+
+// Export the ReceiptPointsApi class
+module.exports = ReceiptPointsApi;
 
 // Create an instance of ReceiptPointsApi and start the server
 const api = new ReceiptPointsApi();

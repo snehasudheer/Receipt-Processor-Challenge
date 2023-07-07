@@ -16,6 +16,7 @@ COPY . .
 # Expose the port the server will be running on
 EXPOSE 3000
 
+
 # Start the server
 # Run the command inside the container
-CMD ["npm", "start", "node", "index.js" ]
+CMD ["npm", "start", "node", "index.js"]
