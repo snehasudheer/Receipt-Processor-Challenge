@@ -13,22 +13,25 @@
 
 6. 'Dockerfile' : The Dockerfile is a text file that contains instructions for building a Docker image. It specifies the base image to use, sets up the environment, copies the necessary files into the image, and defines the commands to run when the container is started.
 
+7. 'Dockerfile.tests' : It is a Docker file for building a Docker image for the tests container.
+   
+8. 'docker-compose.yml' : A Docker compose file is used to define and run multiple containers as a service.
+   
+9. tests/unit.tests.js : This file contains the unit tests.
+
 ## How to run the project:
 
 1. Clone the Project: Clone or download the project source code to your local machine.
 
 2. Navigate to Project Directory: Open a terminal or command prompt and navigate to the directory where you have the project files.
 
-3. Build the Docker Image: Replace '{api-image-name}' with the actual docker image name used. Run the following command to build the Docker image for your project:
-    #### docker build -t {api-image-name}
+3. Build the Docker image for both the containers: Run the below command to build and start the containers (which will run the unit tests and also starts the server):
+   #### docker-compose up
 
-4. Run the Docker Container: Replace '{api-image-name}' with the actual docker image name used. After the image is built successfully, run the Docker container using the following command:                                                    
-    #### docker run -p 3000:3000 {api-image-name}
-
-5. Sending POST Request using docker command: Replace '<container_name_or_id>' with the actual name or ID of your container. Also instead of '{path to}' you can give you path to 'receipt.json' file or just the file name if this file is in the same location as the 'Dockerfile'. Below is the command for sending POST Request:    
+4. Sending POST Request using docker command: Replace '<container_name_or_id>' with the actual name or ID of your container. Also instead of '{path to}' you can give you path to 'receipt.json' file or just the file name if this file is in the same location as the 'Dockerfile'. Below is the command for sending POST Request:    
     #### docker exec <container_name_or_id> curl -X POST -H "Content-Type: application/json" -d '@{path to}/receipt.json' http://localhost:3000/receipts/process
 
-6. Sending GET Request using docker command : Replace '<id>' with the specific receipt ID you want to retrieve points for. Below is the code for sending GET Request:          
+5. Sending GET Request using docker command : Replace '<id>' with the specific receipt ID you want to retrieve points for. Below is the code for sending GET Request:          
     #### docker exec <container_name_or_id> curl -X GET http://localhost:3000/receipts/<id>/points
 
 
